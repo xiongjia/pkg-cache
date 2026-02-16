@@ -1,0 +1,12 @@
+cache_rules:
+  - pattern: "github\\.com/.*\\.tgz$"
+    enabled: true
+  - pattern: "github\\.com/.*/archive/.*\\.tar\\.gz$"
+    enabled: true
+
+cache:
+  directory: /cache
+  max_size_mb: 10240
+
+server:
+  port: 8080
