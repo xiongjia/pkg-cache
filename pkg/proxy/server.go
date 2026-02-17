@@ -12,18 +12,18 @@ import (
 	"strings"
 
 	"github.com/xiongjia/pkg-cache/pkg/cache"
-	"github.com/xiongjia/pkg-cache/pkg/config"
+	"github.com/xiongjia/pkg-cache/pkg/util"
 )
 
 var log = slog.Default()
 
 type Proxy struct {
-	cfg        *config.Config
+	cfg        *util.Config
 	cache      *cache.Cache
 	httpClient *http.Client
 }
 
-func New(cfg *config.Config) *Proxy {
+func New(cfg *util.Config) *Proxy {
 	transport := &http.Transport{
 		TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
 		DialContext: (&net.Dialer{

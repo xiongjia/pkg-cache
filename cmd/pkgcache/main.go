@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/xiongjia/pkg-cache/pkg/config"
+	"github.com/xiongjia/pkg-cache/pkg/util"
 	"github.com/xiongjia/pkg-cache/pkg/proxy"
 )
 
@@ -22,7 +22,7 @@ func main() {
 		configPath = "config.yaml"
 	}
 
-	cfg, err := config.Load(configPath)
+	cfg, err := util.Load(configPath)
 	if err != nil {
 		log.Error("failed to load config", "error", err)
 		os.Exit(1)
