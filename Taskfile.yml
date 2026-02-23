@@ -1,0 +1,51 @@
+version: '3'
+
+tasks:
+  build:
+    desc: Build the binary
+    cmds:
+      - go build -o pkg_cache.exe ./cmd/pkgcache
+
+  run:
+    desc: Run the server
+    cmds:
+      - go run ./cmd/pkgcache
+
+  clean:
+    desc: Clean build artifacts
+    cmds:
+      - rm -f pkg_cache.exe
+
+  test:
+    desc: Run tests
+    cmds:
+      - go test ./...
+
+  docker-up:
+    desc: Start Docker services
+    cmds:
+      - cd docker && docker compose up -d
+
+  docker-build:
+    desc: Build Docker image
+    cmds:
+      - cd docker && docker build -t pkg_cache .
+
+  docker-down:
+    desc: Stop Docker services
+    cmds:
+      - cd docker && docker compose down
+
+  lint:
+    desc: Run linter
+    cmds:
+      - go vet ./...
+
+  fmt:
+    desc: Format code
+    cmds:
+      - go fmt ./...
+
+  all:
+    desc: Build, test, and lint
+    deps: [fmt, lint, test, build]

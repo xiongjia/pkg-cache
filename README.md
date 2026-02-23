@@ -30,22 +30,40 @@ Verdaccio can only cache npm packages from the npm registry. This tool caches ht
 
 ## Usage
 
+### Install Go Task
+
+First, install Go Task:
+
+```bash
+go install github.com/go-task/task/v3/cmd/task@latest
+```
+
 ### Build
 
 ```bash
-go build -o pkg_cache.exe ./cmd/pkgcache
+task build
 ```
 
 ### Run
 
 ```bash
-./pkg_cache.exe
+task run
 ```
 
 Or with custom config:
 
 ```bash
 ./pkg_cache.exe -c /path/to/config.yaml
+```
+
+### Other Commands
+
+```bash
+task test       # Run tests
+task lint       # Run linter
+task fmt        # Format code
+task all        # Build, test, and lint
+task docker-up  # Start Docker services
 ```
 
 ### Configuration
@@ -84,15 +102,13 @@ server:
 ### Build
 
 ```bash
-cd docker
-docker build -t pkg_cache .
+task docker-build
 ```
 
 ### Run with Docker Compose
 
 ```bash
-cd docker
-docker compose up -d
+task docker-up
 ```
 
 This starts:
